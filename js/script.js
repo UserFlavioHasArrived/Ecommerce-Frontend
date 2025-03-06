@@ -9,8 +9,16 @@ function salvar(){
         email: email,
         senha: senha
     }
-    localStorage.setItem("Usuario", usuario);
+    console.log(usuario);
+    //converter o objeto para  json
+    localStorage.setItem("Usuario", JSON.stringify(usuario));
     alert("usuáio salvo com sucesso." + usuario);
+    let usuarioSalvo = localStorage.getItem("usuario");
+    let dados = JSON.parse(usuarioSalvo)
+    //converter o json para objeto
+    console.log(usuarioSalvo);
+    console.log(usuarioSalvo.idade);
+
 }
 
 
