@@ -1,3 +1,19 @@
+function salvar(){
+    let nome = document.getElementById("nome").value;
+    let idade = document.getElementById("idade").value;
+    let email = document.getElementById("email").value;
+    let senha = document.getElementById("senha").value;
+    let usuario = {
+        nome: nome,
+        idade: idade,
+        email: email,
+        senha: senha
+    }
+    localStorage.setItem("Usuario", usuario);
+    alert("usuáio salvo com sucesso." + usuario);
+}
+
+
 let nome = "Flavio";
 let idade = 31;
 const cidade = "Criciuma";
