@@ -37,6 +37,53 @@ function salvar(){
 }).catch((error)=>{
     console.error("erro", error)});
 
+document.addEventListener("DOMContentLoaded", function () { carregarCategrias();
+});
+function carregarCategrias() {
+    fetch("htt´://localhost:8080/api/category") //Endpoint do backend
+    .then(response => response.json())
+    .then(data => { 
+        let select = documento.getElementById("category");
+        data.forEach(category => {
+            let option = document.createElement("option");
+            option.value = category.id;
+            option.textContent = category.name;
+            select.appendChild(option);
+        });
+    })
+    .catch(error => console.error("Erro ao carregar categoria"))
+}
+function salvarProduto(){
+    let selectedCategories = 
+    Array.from (document.getElementById("category").selectedOptions)
+    .map(option =>
+    ({ id:parseInt (option.value)}));
+    let name = document.getElementById("name").value;
+    let price = document.getElementById("price").value;
+    let description = document.getElementById("description").value;
+    let imgUrl = document.getElementById("imgUrl").value;
+    let product = {
+        name: name,
+        price: price,
+        descripton: description,
+        imgUrl: imgUrl,
+        categories: selectedCategories
+    );
+    localStorage.setItem("product", JSON.stringify(product)); 
+    alert("Produto salvo com sucesso.");
+    fetch(
+        "http:// lcalhost:8080/api/products", {}
+        
+
+
+
+
+
+
+
+
+
+
 
 }
 let nome = "Flavio";
