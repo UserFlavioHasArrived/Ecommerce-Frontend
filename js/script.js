@@ -62,9 +62,7 @@ function carregarCategorias() {
 }
 
 function salvarProduto() {
-    let selectedCategories = 
-    Array.from(document.getElementById("category").selectedOptions)
-    .map(option => ({ id: parseInt(option.value) }));
+  
 
     let name = document.getElementById("name").value;
     let price = document.getElementById("price").value;
@@ -74,7 +72,7 @@ function salvarProduto() {
     let product = {
         name: name,
         price: price,
-        description: description, // Corrigido "descripton" para "description"
+        description: description, 
         imgUrl: imgUrl,
         categories: selectedCategories
     };
@@ -97,6 +95,54 @@ function salvarProduto() {
         console.error("Erro ao salvar produto", error);
     });
 }
+
+function salvarUsuario() {
+    
+    
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let phone = document.getElementById("phone").value;
+    let birthDate = document.getElementById("birth_date").value;
+    let roles = document.getElementById("roles").value;
+
+    let usuario = {
+        name: name,
+        email: email,
+        password: password,
+        phone: phone,
+        birth_date: birthDate,
+        roles: roles
+    };
+
+    localStorage.setItem("usuario", JSON.stringify(usuario)); 
+    alert("Usuário salvo com sucesso.");
+
+    fetch("http://localhost:8080/api/usuarios", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(usuario)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Usuário salvo:", data);
+    })
+    .catch(error => {
+        console.error("Erro ao salvar usuário", error);
+    });
+}
+
+
+
+
+
+
+
+
+
+
 
 let nome = "Flavio";
 let idade = 31;
