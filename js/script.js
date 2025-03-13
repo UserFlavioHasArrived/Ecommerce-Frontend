@@ -105,9 +105,7 @@ function salvarUsuario() {
     phone: document.getElementById("phone").value,
     birthDate: document.getElementById("birth_date").value,
     roles: document.getElementById("roles").value,
-
-    
-    };
+};
 
 
     localStorage.setItem("usuario", JSON.stringify(usuario)); 
