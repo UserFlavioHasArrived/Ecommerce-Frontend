@@ -97,23 +97,18 @@ function salvarProduto() {
 }
 
 function salvarUsuario() {
+    let user={
     
-    
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("password").value;
-    let phone = document.getElementById("phone").value;
-    let birthDate = document.getElementById("birth_date").value;
-    let roles = document.getElementById("roles").value;
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    password : document.getElementById("password").value,
+    phone: document.getElementById("phone").value,
+    birthDate: document.getElementById("birth_date").value,
+    roles: document.getElementById("roles").value,
 
-    let usuario = {
-        name: name,
-        email: email,
-        password: password,
-        phone: phone,
-        birth_date: birthDate,
-        roles: roles
+    
     };
+
 
     localStorage.setItem("usuario", JSON.stringify(usuario)); 
     alert("Usuário salvo com sucesso.");
@@ -132,7 +127,7 @@ function salvarUsuario() {
     .catch(error => {
         console.error("Erro ao salvar usuário", error);
     });
-}
+
 
 
 
